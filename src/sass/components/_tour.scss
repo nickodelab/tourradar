@@ -1,0 +1,97 @@
+.tour {
+	min-width: 320px;
+	background-color: white;
+	&__image-wrapper {
+		position: relative;
+		& img {
+			width: 100%;
+		}
+	}
+	&__hearth-icon {
+		position: absolute;
+		top: 7px;
+		right: 10px;
+		font-size: 40px;
+		color: rgb(0 0 0 / 38%);
+	}
+	&__content {
+		padding: 10px;
+		& header {
+			margin-bottom: 20px;
+		}
+	}
+	&__title {
+		margin: 0px 0px 10px;
+	}
+	&__reviews {
+		display: flex;
+		align-items: center;
+		&__count {
+			font-size: 14px;
+			color: $color-text-info;
+			margin: 0;
+		}
+		&__starts {
+			display: flex;
+			margin-right: 5px;
+		}
+		&__icon {
+			color: $color-review-icon-start;
+			font-size: 17px;
+		}
+	}
+	&__info {
+		&__destinations {
+			font-size: 12px;
+			max-width: 100%;
+			margin: 5px 0 8px;
+			display: inline-block;
+			& dt {
+				display: inline-block;
+				width: 34%;
+				color: $color-text-info;
+			}
+			& dd {
+				display: inline-block;
+				width: 65%;
+				margin: 0 0 4px;
+			}
+		}
+		&__duration {
+			display: flex;
+			font-size: 14px;
+			& dl {
+				flex-grow: 1;
+			}
+			& dt {
+				color: $color-text-info;
+			}
+			& dd {
+				margin: 0;
+			}
+		}
+		&__price {
+			& dt {
+				font-size: 18px;
+			}
+			& dd {
+				font-size: 22px;
+				color: $color-cta-price;
+				font-weight: 600;
+			}
+		}
+		&__availability {
+			display: flex;
+			font-size: 14px;
+			& dl {
+				flex-grow: 1;
+			}
+			& dt {
+				color: $color-text-info;
+			}
+			& dd {
+				margin: 0;
+			}
+		}
+	}
+}

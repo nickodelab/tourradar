@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+  <title>Best Europe Tours & Vacation Packages 2022/2023 - TourRadar</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="sass/app.scss">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+  <body> 
+      <nav class="navbar"> 
+          <div class="input">
+            <label for="sortBy">Sort by</label>
+            <select id="sortBy">  
+              <option data-sort="popularity">Popularity</option>
+              <option data-sort="lowest">Price: Lowest first</option>
+              <option data-sort="highest">Price: Highest first</option>
+            </select>
+          </div>
+
+          <div class="input">
+            <label for="filterBy">Filter by</label>
+            <select id="filterBy">
+              <option selected>Departure Date</option>
+              <option data-filter="1">January</option>
+              <option data-filter="2">Febreruary</option>
+            </select>
+          </div>
+      </nav>
+
+      <main>
+        <section class="tour">
+
+            <div class="tour__image-wrapper">
+              <img src="https://cdn.tourradar.com/s3/tour/645x430/1462_c502fc.jpg" alt="" />
+              <i class="tour__hearth-icon material-icons">favorite</i>
+            </div>
+
+            <div class="tour__content">
+              <header>
+                <h2 class="tour__title">Bulgaria Experience (4 days)</h2>
+
+                <div class="tour__reviews">
+                  <div class="tour__reviews__starts">
+                    <i class="tour__reviews__icon material-icons">star</i>
+                    <i class="tour__reviews__icon material-icons">star</i>
+                    <i class="tour__reviews__icon material-icons">star</i>
+                    <i class="tour__reviews__icon material-icons">star</i>
+                    <i class="tour__reviews__icon material-icons">star_border</i>
+                  </div>
+                  <p class="tour__reviews__count">347 reviews</p>
+                </div>
+              </header>
+
+              <hr />
+
+              <dl class="tour__info__destinations">
+                <dt>DESTINATIONS</dt>
+                <dd>Venice, Rome, Florence</dd>
+
+                <dt>STARTS/ ENDS IN</dt>
+                <dd>Sofia / Sofia</dd>
+
+                <dt>OPERATOR</dt>
+                <dd>Topdeck</dd>
+              </dl>
+
+              <div class="tour__info__duration">
+                <dl>
+                  <dt>Duration</dt>
+                  <dd>4 days</dd>
+                </dl>
+
+                <dl class="tour__info__price">
+                  <dt>From</dt>
+                  <dd>€729</dd>
+                </dl>
+              </div>
+
+              <hr />
+
+              <div class="tour__info__availability">
+                <dl>
+                  <dt>28 APR 2019</dt>
+                  <dd>10 spaces left</dd>
+                </dl>
+              
+                <dl>
+                  <dt>29 APR 2019</dt>
+                  <dd>10 spaces left</dd>
+                </dl>
+              </div>
+
+              <button class="btn">View tour <i class="btn__icon material-icons">keyboard_arrow_right</i></button>
+
+            </div>
+        </section>
+      </main>
+      <script src="vendor/tourradar-api.js"></script>
+
+      <script src="scripts/logic.js"></script>
+      <script src="scripts/view.js"></script>
+      <script src="scripts/main.js"></script>
+  </body>
+
+</html>

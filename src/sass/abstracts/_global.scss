@@ -1,0 +1,24 @@
+html,
+body,
+button,
+input,
+textarea,
+select {
+	font-family: $font-family;
+}
+
+body {
+	background-color: $color-background;
+}
+
+main {
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+hr {
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

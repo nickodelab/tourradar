@@ -1,0 +1,25 @@
+$button-icon-padding: 1em;
+$button-text-color: white;
+
+// @mixin button-style($button-color) {
+// 	border: 1px solid $button-color;
+// 	background: $button-color;
+// }
+
+.btn {
+	cursor: pointer;
+	width: 100%;
+	background-color: rgba($color-button-cta, 0.8);
+	color: white;
+	padding: 12px;
+	border-radius: 4px;
+	font-weight: 600;
+	position: relative;
+	&:hover {
+		background-color: rgba($color-button-cta, 1);
+	}
+	&__icon {
+		position: absolute;
+		right: 0;
+	}
+}
