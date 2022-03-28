@@ -1,0 +1,10 @@
+%dl {
+	font-size: 14px;
+	flex-grow: 1;
+	& dt {
+		color: $color-text-info;
+	}
+	& dd {
+		margin: 0;
+	}
+}

@@ -49,56 +49,43 @@
 
 	&__info {
 		&__destinations {
-			font-size: 12px;
-			max-width: 100%;
-			margin: 5px 0 8px;
-			display: inline-block;
-			& dt {
-				display: inline-block;
-				width: 34%;
-				color: $color-text-info;
-			}
-			& dd {
-				display: inline-block;
-				width: 65%;
-				margin: 0 0 4px;
-			}
+			@extend %dl;
 		}
 		&__duration {
-			display: flex;
-			font-size: 14px;
-			& dl {
-				flex-grow: 1;
-			}
-			& dt {
-				color: $color-text-info;
-			}
-			& dd {
-				margin: 0;
-			}
-		}
-		&__price {
-			& dt {
-				font-size: 18px;
-			}
-			& dd {
-				font-size: 22px;
-				color: $color-cta-price;
-				font-weight: 600;
-			}
+			@extend %dl;
 		}
 		&__availability {
-			display: flex;
-			font-size: 14px;
-			& dl {
-				flex-grow: 1;
-			}
-			& dt {
-				color: $color-text-info;
-			}
-			& dd {
-				margin: 0;
-			}
+			@extend %dl;
 		}
 	}
 }
+
+// &__destinations {
+// 			font-size: 12px;
+// 			max-width: 100%;
+// 			margin: 5px 0 8px;
+// 			display: inline-block;
+// 			& dt {
+// 				display: inline-block;
+// 				width: 34%;
+// 				color: $color-text-info;
+// 			}
+// 			& dd {
+// 				display: inline-block;
+// 				width: 65%;
+// 				margin: 0 0 4px;
+// 			}
+// 		}
+
+// &__price {
+// 				& dt {
+// 				font-size: 18px;
+// 				color: $color-text-info;
+// 			}
+// 			& dd {
+// 				margin: 0;
+// 				font-size: 22px;
+// 				color: $color-cta-price;
+// 				font-weight: 600;
+// 			}
+// }
