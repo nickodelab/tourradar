@@ -1,0 +1,11 @@
+@mixin button($color: $color-primary) {
+	@extend %btn;
+	background-color: rgba($color, 0.8);
+	& i {
+		position: absolute;
+		right: 0;
+	}
+	&:hover {
+		background-color: rgba($color, 1);
+	}
+}
