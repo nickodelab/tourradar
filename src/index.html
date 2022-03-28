@@ -15,7 +15,7 @@
       <nav class="navbar"> 
           <div class="input">
             <label for="sortBy">Sort by</label>
-            <select id="sortBy">  
+            <select id="sortBy"> 
               <option data-sort="popularity">Popularity</option>
               <option data-sort="lowest">Price: Lowest first</option>
               <option data-sort="highest">Price: Highest first</option>
@@ -35,24 +35,24 @@
       <main>
         <section class="tour">
 
-            <div class="tour__image-wrapper">
-              <img src="https://cdn.tourradar.com/s3/tour/645x430/1462_c502fc.jpg" alt="" />
-              <i class="tour__hearth-icon material-icons">favorite</i>
+            <div class="tour__media">
+              <img class="tour__media__image" src="https://cdn.tourradar.com/s3/tour/645x430/1462_c502fc.jpg" alt="" />
+              <i class="tour__media__icon material-icons">favorite</i>
             </div>
 
             <div class="tour__content">
-              <header>
-                <h2 class="tour__title">Bulgaria Experience (4 days)</h2>
+              <header class="tour__content_header">
+                <h2 class="tour__content__header__title">Bulgaria Experience (4 days)</h2>
 
-                <div class="tour__reviews">
-                  <div class="tour__reviews__starts">
-                    <i class="tour__reviews__icon material-icons">star</i>
-                    <i class="tour__reviews__icon material-icons">star</i>
-                    <i class="tour__reviews__icon material-icons">star</i>
-                    <i class="tour__reviews__icon material-icons">star</i>
-                    <i class="tour__reviews__icon material-icons">star_border</i>
+                <div class="tour__content__header__reviews">
+                  <div class="tour__content__header__reviews__starts">
+                    <i class="tour__content__header__reviews__icon material-icons">star</i>
+                    <i class="tour__content__header__reviews__icon material-icons">star</i>
+                    <i class="tour__content__header__reviews__icon material-icons">star</i>
+                    <i class="tour__content__header__reviews__icon material-icons">star</i>
+                    <i class="tour__content__header__reviews__icon material-icons">star_border</i>
                   </div>
-                  <p class="tour__reviews__count">347 reviews</p>
+                  <p class="tour__content__header__reviews__count">347 reviews</p>
                 </div>
               </header>
 
@@ -95,7 +95,12 @@
                 </dl>
               </div>
 
-              <button class="btn">View tour <i class="btn__icon material-icons">keyboard_arrow_right</i></button>
+              <button class="btn-primary">
+                View tour
+                <i class="btn__icon material-icons">
+                  keyboard_arrow_right
+                </i>
+              </button>
 
             </div>
         </section>

@@ -3,9 +3,18 @@ $color-text-title: #2c3e50;
 $color-text-info: #818d99;
 $color-review-icon-start: #feb50a;
 $color-cta-price: #41c4ab;
-$color-button-cta: #ee8823;
 
-// TYPOGRAPHY
+// colors
+$color-primary: #ee8823;
+$color-secondary: #41c4ab;
+
+// breakpoints
+$breakpoint-sm: 600px !default;
+// $breakpoint-md: 900px !default;
+// $breakpoint-lg: 1200px !default;
+// $breakpoint-xl: 1536px !default;
+
+// typography
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 $font-family: "Open Sans", sans-serif !default;
 
