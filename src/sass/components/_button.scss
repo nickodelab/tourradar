@@ -1,18 +1,30 @@
+@mixin button($color: $color-primary) {
+  @extend %btn;
+  background-color: rgba($color, 0.8);
+  & i {
+    position: absolute;
+    right: "1000px";
+  }
+  &:hover {
+    background-color: rgba($color, 1);
+  }
+}
+
 %btn {
-	cursor: pointer;
-	padding: 12px;
-	border-radius: 4px;
-	width: 100%;
-	color: white;
-	font-weight: 600;
-	position: relative;
-	max-width: $breakpoint-sm;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 4px;
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  max-width: $breakpoint-sm;
 }
 
 .btn-primary {
-	@include button;
+  @include button;
 }
 
 .btn-secondary {
-	@include button($color-secondary);
+  @include button($color-secondary);
 }

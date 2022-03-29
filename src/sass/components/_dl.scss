@@ -1,10 +1,30 @@
-%dl {
-	font-size: 14px;
-	flex-grow: 1;
-	& dt {
-		color: $color-text-info;
-	}
-	& dd {
-		margin: 0;
-	}
+@mixin dl($inline: false) {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  @if $inline {
+    display: inline-block;
+  }
+  & dt {
+    color: $color-text-info;
+    @if $inline {
+      width: 34%;
+      display: inline-block;
+    }
+  }
+  & dd {
+    margin: 0 0 5px;
+    @if $inline {
+      width: 65%;
+      display: inline-block;
+    }
+  }
+}
+
+.dl-inline {
+  @include dl($inline: true);
+}
+
+.dl {
+  @include dl;
 }
