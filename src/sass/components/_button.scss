@@ -1,30 +1,30 @@
 @mixin button($color: $color-primary) {
-	@extend %btn;
-	background-color: rgba($color, 0.8);
-	& i {
-		position: absolute;
-		right: 0;
-	}
-	&:hover {
-		background-color: rgba($color, 1);
-	}
+    @extend %btn;
+    background-color: rgba($color, 0.8);
+    & i {
+        position: absolute;
+        right: 0;
+    }
+    &:hover {
+        background-color: rgba($color, 1);
+    }
 }
 
 %btn {
-	cursor: pointer;
-	padding: 12px;
-	border-radius: 4px;
-	width: 100%;
-	color: white;
-	position: relative;
-	max-width: $breakpoint-sm;
-	@include flexy($jc: center, $ai: center);
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    color: white;
+    position: relative;
+    // max-width: $breakpoint-sm;
+    @include flexy($jc: center, $ai: center);
 }
 
 .btn-primary {
-	@include button;
+    @include button;
 }
 
 .btn-secondary {
-	@include button($color-secondary);
+    @include button($color-secondary);
 }

@@ -14,7 +14,9 @@
             color: rgba(0, 0, 0, 0.38);
         }
     }
-
+    &__info {
+        @extend %padding;
+    }
     &__header {
         margin-bottom: 16px;
         &__title {
@@ -40,11 +42,12 @@
     }
 
     &__details {
-        &__availability {
-            @include flexy;
-        }
+        @extend %padding;
         &__duration-price {
             margin-top: 12px;
+            @include flexy;
+        }
+        &__availability {
             @include flexy;
         }
     }
