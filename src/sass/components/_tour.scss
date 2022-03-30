@@ -1,91 +1,54 @@
 .tour {
-  min-width: 320px;
-  background-color: white;
+	min-width: 320px;
+	background-color: white;
 
-  // media
-  &__media {
-    position: relative;
-    &__image {
-      width: 100%;
-    }
-    &__icon {
-      position: absolute;
-      top: 7px;
-      right: 10px;
-      font-size: 40px;
-      color: rgb(0 0 0 / 38%);
-    }
-  }
+	// media
+	&__media {
+		position: relative;
+		&__image {
+			width: 100%;
+		}
+		&__icon {
+			position: absolute;
+			top: 7px;
+			right: 10px;
+			font-size: 42px;
+			color: rgba(0, 0, 0, 0.38);
+		}
+	}
 
-  // content - todo - remove
-  &__content {
-    padding: 10px;
-  }
+	// header: title + reviews
+	&__header {
+		margin-bottom: 20px;
+		&__title {
+			margin: 0px 0px 10px;
+		}
+		&__reviews {
+			display: flex;
+			align-items: center;
+			&__starts {
+				display: flex;
+				margin-right: 5px;
+			}
+			&__icon {
+				color: $color-review-icon-start;
+				font-size: 17px;
+			}
+			&__count {
+				font-size: 14px;
+				color: $color-text-info;
+				margin: 0;
+			}
+		}
+	}
 
-  // header: title + reviews
-  &__header {
-    margin-bottom: 20px;
-    &__title {
-      margin: 0px 0px 10px;
-    }
-    &__reviews {
-      display: flex;
-      align-items: center;
-      &__starts {
-        display: flex;
-        margin-right: 5px;
-      }
-      &__icon {
-        color: $color-review-icon-start;
-        font-size: 17px;
-      }
-      &__count {
-        font-size: 14px;
-        color: $color-text-info;
-        margin: 0;
-      }
-    }
-  }
-
-  &__info {
-    &__destinations {
-      // @extend %dl;
-    }
-    &__duration {
-      // @extend %dl;
-    }
-    &__availability {
-      // @extend %dl;
-    }
-  }
+	&__content {
+		padding: 10px;
+		&__availability {
+			@include flexy;
+		}
+		&__duration-price {
+			@include flexy;
+		}
+	}
 }
-
-// &__destinations {
-// 			font-size: 12px;
-// 			max-width: 100%;
-// 			margin: 5px 0 8px;
-// 			display: inline-block;
-// 			& dt {
-// 				display: inline-block;
-// 				width: 34%;
-// 				color: $color-text-info;
-// 			}
-// 			& dd {
-// 				display: inline-block;
-// 				width: 65%;
-// 				margin: 0 0 4px;
-// 			}
-// 		}
-
-// &__price {
-// 				& dt {
-// 				font-size: 18px;
-// 				color: $color-text-info;
-// 			}
-// 			& dd {
-// 				margin: 0;
-// 				font-size: 22px;
-// 				color: $color-cta-price;
-// 				font-weight: 600;
-// 			}
-// }

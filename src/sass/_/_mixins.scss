@@ -1,1 +1,5 @@
-
+@mixin flexy($jc: row, $ff: row wrap) {
+	display: flex;
+	justify-content: $jc;
+	flex-flow: $ff;
+}
