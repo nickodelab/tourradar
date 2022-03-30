@@ -1,6 +1,4 @@
 .navbar {
-	display: flex;
-	width: 95%;
-	margin: 0 auto;
-	padding-top: 10px;
+    @include flexy;
+    padding: 6px;
 }

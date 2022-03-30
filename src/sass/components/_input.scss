@@ -1,9 +1,9 @@
 .input {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-	& label {
-		font-size: 0.8rem;
-		color: #798490;
-	}
+    margin: 3px;
+    @include flexy($fd: column);
+    flex-grow: 1;
+    & label {
+        font-size: 0.8rem;
+        color: #798490;
+    }
 }

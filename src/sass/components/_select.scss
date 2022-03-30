@@ -1,15 +1,14 @@
 select {
-	padding: 10px;
-	border: 1px solid #d4d9e2;
-	background-color: white;
-	border-radius: 1px;
-	font-size: 0.8rem;
-	margin-top: 3px;
-	cursor: pointer;
-	& option {
-		display: block;
-		white-space: nowrap;
-		min-height: 1.2em;
-		padding: 0px 2px 1px;
-	}
+    padding: 12px 10px;
+    border: 1px solid #d4d9e2;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 200;
+    width: 100%;
+    & option {
+        display: block;
+        white-space: nowrap;
+        min-height: 1.2em;
+        padding: 0px 2px 1px;
+    }
 }

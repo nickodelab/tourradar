@@ -1,50 +1,50 @@
 @mixin dl($inline: false, $highlighted: false) {
-	font-size: 13px;
-	flex-grow: 1;
-	margin-bottom: 20px;
-	font-weight: 200;
+    font-size: 13px;
+    flex-grow: 1;
+    font-weight: 200;
+    margin: 6px 0;
 
-	@if $inline {
-		display: inline-block;
-	}
+    @if $inline {
+        display: inline-block;
+    }
 
-	& dt {
-		color: $color-text-info;
+    & dt {
+        color: $color-text-info;
 
-		@if $inline {
-			width: 40%;
-			display: inline-block;
-		}
+        @if $inline {
+            width: 40%;
+            display: inline-block;
+        }
 
-		@if $highlighted {
-			font-size: 16px;
-			font-weight: 400;
-		}
-	}
-	& dd {
-		margin: 0 0 5px;
+        @if $highlighted {
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+    & dd {
+        margin: 0 0 5px;
 
-		@if $inline {
-			width: 58%;
-			display: inline-block;
-		}
+        @if $inline {
+            width: 58%;
+            display: inline-block;
+        }
 
-		@if $highlighted {
-			font-size: 25px;
-			font-weight: 400;
-			color: $color-secondary;
-		}
-	}
+        @if $highlighted {
+            font-size: 25px;
+            font-weight: 400;
+            color: $color-secondary;
+        }
+    }
 }
 
 .dl {
-	@include dl;
+    @include dl;
 }
 
 .dl--highlighted {
-	@include dl($inline: false, $highlighted: true);
+    @include dl($inline: false, $highlighted: true);
 }
 
 .dl--inline {
-	@include dl($inline: true);
+    @include dl($inline: true);
 }

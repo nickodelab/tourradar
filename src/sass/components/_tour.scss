@@ -1,54 +1,51 @@
 .tour {
-	min-width: 320px;
-	background-color: white;
+    background-color: white;
 
-	// media
-	&__media {
-		position: relative;
-		&__image {
-			width: 100%;
-		}
-		&__icon {
-			position: absolute;
-			top: 7px;
-			right: 10px;
-			font-size: 42px;
-			color: rgba(0, 0, 0, 0.38);
-		}
-	}
+    &__media {
+        position: relative;
+        &__image {
+            width: 100%;
+        }
+        &__icon {
+            position: absolute;
+            top: 7px;
+            right: 10px;
+            font-size: 42px;
+            color: rgba(0, 0, 0, 0.38);
+        }
+    }
 
-	// header: title + reviews
-	&__header {
-		margin-bottom: 20px;
-		&__title {
-			margin: 0px 0px 10px;
-		}
-		&__reviews {
-			display: flex;
-			align-items: center;
-			&__starts {
-				display: flex;
-				margin-right: 5px;
-			}
-			&__icon {
-				color: $color-review-icon-start;
-				font-size: 17px;
-			}
-			&__count {
-				font-size: 14px;
-				color: $color-text-info;
-				margin: 0;
-			}
-		}
-	}
+    &__header {
+        margin-bottom: 16px;
+        &__title {
+            margin: 0px 0px 10px;
+        }
+        &__reviews {
+            @include flexy($ai: center);
+            &__starts {
+                @include flexy;
+                margin-right: 5px;
+            }
+            &__icon {
+                color: $color-review-icon-start;
+                font-size: 17px;
+            }
+            &__count {
+                font-size: 14px;
+                font-weight: 200;
+                color: $color-text-info;
+                margin: 0;
+            }
+        }
+    }
 
-	&__content {
-		padding: 10px;
-		&__availability {
-			@include flexy;
-		}
-		&__duration-price {
-			@include flexy;
-		}
-	}
+    &__details {
+        &__availability {
+            @include flexy;
+        }
+        &__duration-price {
+            margin-top: 12px;
+            @include flexy;
+        }
+    }
 }
