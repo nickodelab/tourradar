@@ -18,6 +18,10 @@ h2 {
 main {
     margin: 0 auto;
     padding: 10px;
+
+    @media screen and (min-width: $breakpoint-md) {
+        @include flexy($jc: center);
+    }
 }
 
 hr {
@@ -31,5 +35,5 @@ hr {
 }
 
 %padding {
-    padding: 8px 12px 20px;
+    padding: 16px 18px 0px;
 }

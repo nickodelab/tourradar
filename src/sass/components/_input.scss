@@ -2,8 +2,16 @@
     margin: 3px;
     @include flexy($fd: column);
     flex-grow: 1;
+
+    @media screen and (min-width: $breakpoint-md) {
+        @include flexy($fd: row, $ai: center);
+        flex-grow: initial;
+        width: 250px;
+    }
+
     & label {
         font-size: 0.8rem;
         color: #798490;
+        width: 70px;
     }
 }

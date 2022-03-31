@@ -1,11 +1,27 @@
 .tour {
     background-color: white;
 
+    @media screen and (min-width: $breakpoint-md) {
+        @include flexy($jc: space-between);
+        width: $breakpoint-lg;
+    }
+
     &__media {
         position: relative;
+        @media screen and (min-width: $breakpoint-md) {
+            height: 226px;
+        }
+
         &__image {
             width: 100%;
+
+            @media screen and (min-width: $breakpoint-md) {
+                height: 226px;
+                object-fit: cover;
+                width: 230px;
+            }
         }
+
         &__icon {
             position: absolute;
             top: 7px;
@@ -14,24 +30,26 @@
             color: rgba(0, 0, 0, 0.38);
         }
     }
-    &__info {
-        @extend %padding;
-    }
     &__header {
         margin-bottom: 16px;
+
         &__title {
             margin: 0px 0px 10px;
         }
+
         &__reviews {
             @include flexy($ai: center);
+
             &__starts {
                 @include flexy;
                 margin-right: 5px;
             }
+
             &__icon {
                 color: $color-review-icon-start;
                 font-size: 17px;
             }
+
             &__count {
                 font-size: 14px;
                 font-weight: 200;
@@ -41,8 +59,28 @@
         }
     }
 
+    &__info {
+        @extend %padding;
+
+        &__description {
+            display: none;
+            font-weight: 200;
+            font-size: 14px;
+            font-style: italic;
+            color: $color-text-info;
+
+            @media screen and (min-width: $breakpoint-md) {
+                display: block;
+            }
+        }
+    }
     &__details {
         @extend %padding;
+
+        @media screen and (min-width: $breakpoint-md) {
+            width: 300px;
+        }
+
         &__duration-price {
             margin-top: 12px;
             @include flexy;

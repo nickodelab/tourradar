@@ -17,7 +17,6 @@
     width: 100%;
     color: white;
     position: relative;
-    // max-width: $breakpoint-sm;
     @include flexy($jc: center, $ai: center);
 }
 
