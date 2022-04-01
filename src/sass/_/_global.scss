@@ -20,7 +20,7 @@ main {
     padding: 10px;
 
     @media screen and (min-width: $breakpoint-md) {
-        @include flexy($jc: center);
+        @include flexy($fd: column, $jc: center, $ai: center);
     }
 }
 

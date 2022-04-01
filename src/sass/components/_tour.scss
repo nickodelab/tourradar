@@ -1,9 +1,12 @@
 .tour {
     background-color: white;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
 
     @media screen and (min-width: $breakpoint-md) {
         @include flexy($jc: space-between);
         width: $breakpoint-lg;
+        padding-bottom: 0;
     }
 
     &__media {

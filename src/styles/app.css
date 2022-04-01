@@ -406,9 +406,9 @@ main {
   /* line 18, ../../../../../Users/nicopixel/coding/tourradar/src/sass/_/_global.scss */
   main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
@@ -519,6 +519,8 @@ select option {
 /* line 1, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour {
   background-color: white;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
 }
 
 @media screen and (min-width: 900px) {
@@ -529,28 +531,29 @@ select option {
     justify-content: space-between;
     align-items: flex-start;
     width: 1200px;
+    padding-bottom: 0;
   }
 }
 
-/* line 9, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 12, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__media {
   position: relative;
 }
 
 @media screen and (min-width: 900px) {
-  /* line 9, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+  /* line 12, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
   .tour__media {
     height: 226px;
   }
 }
 
-/* line 15, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 18, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__media__image {
   width: 100%;
 }
 
 @media screen and (min-width: 900px) {
-  /* line 15, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+  /* line 18, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
   .tour__media__image {
     height: 226px;
     object-fit: cover;
@@ -558,7 +561,7 @@ select option {
   }
 }
 
-/* line 25, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 28, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__media__icon {
   position: absolute;
   top: 7px;
@@ -567,17 +570,17 @@ select option {
   color: rgba(0, 0, 0, 0.38);
 }
 
-/* line 33, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 36, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__header {
   margin-bottom: 16px;
 }
 
-/* line 36, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 39, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__header__title {
   margin: 0px 0px 10px;
 }
 
-/* line 40, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 43, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__header__reviews {
   display: flex;
   flex-direction: row;
@@ -585,7 +588,7 @@ select option {
   align-items: center;
 }
 
-/* line 43, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 46, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__header__reviews__starts {
   display: flex;
   flex-direction: row;
@@ -594,13 +597,13 @@ select option {
   margin-right: 5px;
 }
 
-/* line 48, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 51, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__header__reviews__icon {
   color: #feb50a;
   font-size: 17px;
 }
 
-/* line 53, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 56, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__header__reviews__count {
   font-size: 14px;
   font-weight: 200;
@@ -608,7 +611,7 @@ select option {
   margin: 0;
 }
 
-/* line 65, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 68, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__info__description {
   display: none;
   font-weight: 200;
@@ -618,20 +621,20 @@ select option {
 }
 
 @media screen and (min-width: 900px) {
-  /* line 65, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+  /* line 68, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
   .tour__info__description {
     display: block;
   }
 }
 
 @media screen and (min-width: 900px) {
-  /* line 77, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+  /* line 80, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
   .tour__details {
     width: 300px;
   }
 }
 
-/* line 84, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 87, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__details__duration-price {
   margin-top: 12px;
   display: flex;
@@ -640,7 +643,7 @@ select option {
   align-items: flex-start;
 }
 
-/* line 88, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
+/* line 91, ../../../../../Users/nicopixel/coding/tourradar/src/sass/components/_tour.scss */
 .tour__details__availability {
   display: flex;
   flex-direction: row;
