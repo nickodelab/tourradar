@@ -17,10 +17,11 @@ class Tour {
         this.$el = $el;
     }
 
-    fillValues({ name, images }) {
+    fillValues({ name, images, reviews }) {
         this.name = name;
         this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
         this.primaryImageURL = this.setPrimaryURL(images);
+        this.reviewsNumber = reviews;
     }
 
     setPrimaryURL(images) {

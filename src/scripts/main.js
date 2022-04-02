@@ -17,6 +17,10 @@ toursResults.onLoad = () => {
 
                 newTour.$el.find('h2').html(tour.name);
                 newTour.$el.find('img').attr('src', newTour.primaryImageURL);
+                newTour.$el.find('img').attr('alt', tour.name);
+
+                if (tour.reviews && tour.rating) newTour.$el.find('#reviewCount').html(`${tour.reviews} reviews`);
+                else newTour.$el.find('#tourReviews').remove();
 
                 toursResults.renderTour(newTour.$el);
             });
