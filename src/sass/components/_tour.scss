@@ -65,6 +65,10 @@
     &__info {
         @extend %padding;
 
+        @media screen and (min-width: $breakpoint-md) {
+            width: 590px;
+        }
+
         &__description {
             display: none;
             font-weight: 200;

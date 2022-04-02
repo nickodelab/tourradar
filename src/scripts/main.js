@@ -9,20 +9,15 @@ toursResults.onLoad = () => {
         logic.onLoad((error, tours) => {
             if (error) sortSelect.error = error.message;
 
-            const newTour = new Tour($('#tour'));
-            toursResults.clearList();
-
             tours.forEach((tour) => {
-                newTour.fillValues(tour);
-
-                newTour.$el.find('h2').html(tour.name);
-                newTour.$el.find('img').attr('src', newTour.primaryImageURL);
-                newTour.$el.find('img').attr('alt', tour.name);
-
-                if (tour.reviews && tour.rating) newTour.$el.find('#reviewCount').html(`${tour.reviews} reviews`);
-                else newTour.$el.find('#tourReviews').remove();
-
-                toursResults.renderTour(newTour.$el);
+                $.get(
+                    './templates/tour.html',
+                    function (html_string) {
+                        const newTour = new Tour($(html_string), tour);
+                        toursResults.renderTour(newTour.$el);
+                    },
+                    'html'
+                );
             });
         });
     } catch (err) {

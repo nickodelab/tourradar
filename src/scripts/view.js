@@ -1,37 +1,81 @@
 class ToursResult {
     constructor($el) {
-        this.$toursList = $el;
+        this.$el = $el;
     }
 
     clearList() {
-        this.$toursList.empty();
+        this.$el.empty();
     }
 
     renderTour($tour) {
-        toursResults.$toursList.append($tour.clone()).html();
+        // toursResults.$el.append($tour.clone()).html();
+        toursResults.$el.append($tour);
     }
 }
 
 class Tour {
-    constructor($el) {
+    constructor($el, { name, images, reviews, rating, description }) {
         this.$el = $el;
-    }
 
-    fillValues({ name, images, reviews }) {
+        // name
         this.name = name;
+        this.renderName(name);
+
+        // images
         this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
-        this.primaryImageURL = this.setPrimaryURL(images);
-        this.reviewsNumber = reviews;
+        this.imageURL = this.setPrimaryImage(images);
+        this.renderImage();
+
+        // reviews
+        this.renderReviews(rating, reviews);
+
+        // description
+        this.description = description;
+        this.renderDescription(description);
     }
 
-    setPrimaryURL(images) {
-        if (images.length === 0) return this.defaultImageURL;
+    renderDescription(description) {
+        this.$el.find('#tourDescription').html(`${description.substring(0, 120)}...`);
+    }
 
+    renderName(name) {
+        this.$el.find('#tourTitle').html(name);
+    }
+
+    renderImage() {
+        this.$el.find('img').attr('src', this.imageURL);
+        this.$el.find('img').attr('alt', this.name);
+    }
+
+    renderReviews(rating, reviewCount) {
+        const numberStarsToShow = 5;
+
+        if (rating && reviewCount) {
+            // review text
+            this.$el.find('#reviewCount').html(`${reviewCount} reviews`);
+
+            let starsHtml = '';
+            for (let i = 0; i < Math.floor(rating); i++)
+                starsHtml += "<i class='tour__header__reviews__icon material-icons'>star</i>";
+
+            for (let i = 0; i < numberStarsToShow - Math.floor(rating); i++) {
+                if (rating % 1 !== 0)
+                    starsHtml += "<i class='tour__header__reviews__icon material-icons'>star_half</i>";
+                else starsHtml += "<i class='tour__header__reviews__icon material-icons'>star_border</i>";
+            }
+
+            this.$el.find('#tourReviewsStarts').append($(starsHtml));
+        }
+    }
+
+    setPrimaryImage(images) {
         let newImage = images.find((image) => image.is_primary && image.url && image.url.trim().lenght !== 0);
         if (newImage) return newImage.url;
 
         newImage = images.find((image) => image.url && image.url.trim().lenght !== 0);
         if (newImage) return newImage.url;
+
+        return this.defaultImageURL;
     }
 }
 
