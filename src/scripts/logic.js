@@ -10,6 +10,8 @@ const logic = {
     /**
      * Add the property 'priceFrom' to every tour
      * calculated based on the cheapest date with availability
+     *
+     * priceFrom can be undefined
      */
     addPriceFrom() {
         this.tours = this.__tours__.map((tour) => {
@@ -71,7 +73,7 @@ const logic = {
     onLoad(callback) {
         if (typeof callback !== 'function') throw TypeError(`${callback} is not a function`);
 
-        tourRadarAPI.onLoad((err, tours) => {
+        tourRadarAPI.getTours((err, tours) => {
             if (err) callback(err);
             this.tours = tours;
 
@@ -81,6 +83,7 @@ const logic = {
             // load by default by popularity
             this.sortByPopularity();
 
+            console.log('this.__tours__', this.__tours__);
             callback(undefined, this.__tours__);
         });
     },

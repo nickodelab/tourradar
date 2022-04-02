@@ -16,7 +16,7 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const { name, images, reviews, rating, description, operator_name, length, cities, dates, priceFrom } = tour;
+        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom } = tour;
 
         // name
         this.name = name;
@@ -24,7 +24,7 @@ class Tour {
 
         // images
         this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
-        this.imageURL = this.setPrimaryImage(images);
+        this.primaryImageURL = this.setPrimaryImage(images);
         this.renderImage();
 
         // reviews
@@ -38,7 +38,7 @@ class Tour {
         this.operator = operator_name;
         this.renderOperator(operator_name);
 
-        // duration
+        // duration in days
         this.duration = length;
         this.renderDuration(length);
 
@@ -51,8 +51,9 @@ class Tour {
         this.renderPriceFrom(priceFrom);
     }
 
+    // priceFrom can be undefined
     renderPriceFrom(priceFrom) {
-        this.$el.find('#priceFrom').html(`${priceFrom} €`);
+        this.$el.find('#priceFrom').html(`${priceFrom ? priceFrom : '-'} €`);
     }
 
     renderDestinationsStartEnd(destinations) {
@@ -71,6 +72,7 @@ class Tour {
     }
 
     renderDescription(description) {
+        // show only 120 chars in description
         this.$el.find('#tourDescription').html(`${description.substring(0, 120)}...`);
     }
 
@@ -79,7 +81,7 @@ class Tour {
     }
 
     renderImage() {
-        this.$el.find('img').attr('src', this.imageURL);
+        this.$el.find('img').attr('src', this.primaryImageURL);
         this.$el.find('img').attr('alt', this.name);
     }
 
@@ -87,7 +89,6 @@ class Tour {
         const numberStarsToShow = 5;
 
         if (rating && reviewCount) {
-            // review text
             this.$el.find('#reviewCount').html(`${reviewCount} reviews`);
 
             let starsHtml = '';

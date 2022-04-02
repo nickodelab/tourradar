@@ -25,8 +25,6 @@ toursResults.onLoad = () => {
     }
 };
 
-toursResults.onLoad();
-
 sortSelect.onSort = (sortBy) => {
     try {
         logic.onSort(sortBy, function (error, tours) {
@@ -62,3 +60,7 @@ filterSelect.onFilter = (filterBy) => {
         console.error(err);
     }
 };
+
+$(window).on('load', function () {
+    toursResults.onLoad();
+});
