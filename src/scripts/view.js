@@ -43,17 +43,17 @@ class Tour {
         this.duration = length;
         this.renderDuration(length);
 
-        // destinations
-        this.destinations = cities;
-        this.renderDestinations(cities);
+        // destinations + starts/ends
+        this.cities = cities;
+        this.renderDestinationsStartEnd(cities);
     }
 
-    renderDestinations(destinations) {
-        const citiesStr = destinations
-            .map(({ name }) => name)
-            .slice(0, 3)
-            .join(', ');
-        this.$el.find('#destinations').html(citiesStr);
+    renderDestinationsStartEnd(destinations) {
+        const cities = destinations.map(({ name }) => name);
+
+        this.$el.find('#destinations').html(cities.slice(0, 3).join(', '));
+
+        this.$el.find('#startsEnds').html(`${cities[0]} / ${cities[cities.length - 1]}`);
     }
 
     renderDuration(duration) {
