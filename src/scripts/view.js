@@ -1,41 +1,63 @@
-class Select {
-	constructor($el) {
-		this.__$el__ = $el;
-	}
+class ToursResult {
+    constructor($el) {
+        this.$toursList = $el;
+    }
 
-	show() {
-		this.$container.show();
-	}
+    clearList() {
+        this.$toursList.empty();
+    }
 
-	hide() {
-		this.$container.hide();
-	}
+    renderTour($tour) {
+        toursResults.$toursList.append($tour.clone()).html();
+    }
 }
 
-class SortSelect extends Select {
-	constructor($el) {
-		super($el);
-	}
+class Tour {
+    constructor($el) {
+        this.$el = $el;
+    }
 
-	set onSort(callback) {
-		this.__$el__.on("change", (e) => {
-			const sortBy = this.__$el__.find(":selected").data("sort");
-			callback(sortBy);
-		});
-	}
+    fillValues({ name, images }) {
+        this.name = name;
+        this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
+        this.primaryImageURL = this.setPrimaryURL(images);
+    }
+
+    setPrimaryURL(images) {
+        if (images.length === 0) return this.defaultImageURL;
+
+        let newImage = images.find((image) => image.is_primary && image.url && image.url.trim().lenght !== 0);
+        if (newImage) return newImage.url;
+
+        newImage = images.find((image) => image.url && image.url.trim().lenght !== 0);
+        if (newImage) return newImage.url;
+    }
 }
 
-class FilterSelect extends Select {
-	constructor($el) {
-		super($el);
-	}
+class SortSelect {
+    constructor($el) {
+        this.__$el__ = $el;
+    }
 
-	set onFilter(callback) {
-		this.__$el__.on("change", () => {
-			const filterBy = this.__$el__.find(":selected").data("filter");
-			callback(filterBy);
-		});
-	}
+    set onSort(callback) {
+        this.__$el__.on('change', (e) => {
+            const sortBy = this.__$el__.find(':selected').data('sort');
+            callback(sortBy);
+        });
+    }
+}
+
+class FilterSelect {
+    constructor($el) {
+        this.__$el__ = $el;
+    }
+
+    set onFilter(callback) {
+        this.__$el__.on('change', () => {
+            const filterBy = this.__$el__.find(':selected').data('filter');
+            callback(filterBy);
+        });
+    }
 }
 
 // class SearchPanel extends Panel {
