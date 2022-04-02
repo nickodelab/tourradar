@@ -17,7 +17,7 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const { name, images, reviews, rating, description, operator_name, length, cities } = tour;
+        const { name, images, reviews, rating, description, operator_name, length, cities, dates } = tour;
 
         // name
         this.name = name;
@@ -46,6 +46,25 @@ class Tour {
         // destinations + starts/ends
         this.cities = cities;
         this.renderDestinationsStartEnd(cities);
+
+        // price - from
+        this.price = dates;
+        this.renderPrice(dates);
+    }
+
+    renderPrice(dates) {
+        if (dates.length === 0) return;
+
+        // filter first by availability > 0
+        const datesWithAvailability = dates.filter(({ availability }) => availability > 0);
+        console.log('datesWithAvailability', datesWithAvailability);
+
+        // then order by ascending price
+        const datesOrderedByPrice = [...datesWithAvailability];
+        datesOrderedByPrice.sort((a, b) => a.eur - b.eur);
+        console.log('datesOrderedByPrice', datesOrderedByPrice);
+
+        this.$el.find('#priceFrom').html(`${datesOrderedByPrice[0].eur} €`);
     }
 
     renderDestinationsStartEnd(destinations) {
