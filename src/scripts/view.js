@@ -14,8 +14,10 @@ class ToursResult {
 }
 
 class Tour {
-    constructor($el, { name, images, reviews, rating, description }) {
+    constructor($el, tour) {
         this.$el = $el;
+
+        const { name, images, reviews, rating, description, operator_name, length, cities } = tour;
 
         // name
         this.name = name;
@@ -32,6 +34,34 @@ class Tour {
         // description
         this.description = description;
         this.renderDescription(description);
+
+        // operator
+        this.operator = operator_name;
+        this.renderOperator(operator_name);
+
+        // duration
+        this.duration = length;
+        this.renderDuration(length);
+
+        // destinations
+        this.destinations = cities;
+        this.renderDestinations(cities);
+    }
+
+    renderDestinations(destinations) {
+        const citiesStr = destinations
+            .map(({ name }) => name)
+            .slice(0, 3)
+            .join(', ');
+        this.$el.find('#destinations').html(citiesStr);
+    }
+
+    renderDuration(duration) {
+        this.$el.find('#duration').html(`${duration} days`);
+    }
+
+    renderOperator(operator) {
+        this.$el.find('#operator').html(operator);
     }
 
     renderDescription(description) {
