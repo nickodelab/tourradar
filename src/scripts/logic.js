@@ -2,6 +2,7 @@
 
 const logic = {
     __tours__: undefined,
+    __defaultImageURL__: `https://via.placeholder.com/150/818d99/FFFFFF/?text=`,
 
     set tours(tours) {
         this.__tours__ = tours;
@@ -25,6 +26,35 @@ const logic = {
 
             return { ...tour, priceFrom: datesOrderedByPrice.length === 0 ? undefined : datesOrderedByPrice[0].eur };
         });
+    },
+
+    /**
+     * Add the property 'primaryImageURL' to every tour
+     * calculated based on all values for tour.images
+     * {...tour, primaryImageURL: "https:..." }
+     *
+     * priceFrom can be undefined
+     */
+
+    addPrimaryImageURL() {
+        const newTours = this.__tours__.map((tour) => {
+            // images can be []
+            if (tour.images.length === 0)
+                return {
+                    ...tour,
+                    primaryImageURL: this.__defaultImageURL__ + tour.name,
+                };
+
+            // search for primary image with valid url
+            let newImage = tour.images.find((image) => image.is_primary && image.url && image.url.trim().length !== 0);
+            if (newImage) return { ...tour, primaryImageURL: newImage.url };
+
+            // search for any images valid
+            newImage = tour.images.find((image) => image.url && image.url.trim().length !== 0);
+            return { ...tour, primaryImageURL: newImage.url };
+        });
+
+        this.__tours__ = newTours;
     },
 
     /**
@@ -80,10 +110,12 @@ const logic = {
             // add priceFrom to every tour
             this.addPriceFrom();
 
+            // add primaryImageURL to every tour
+            this.addPrimaryImageURL();
+
             // load by default by popularity
             this.sortByPopularity();
 
-            console.log('this.__tours__', this.__tours__);
             callback(undefined, this.__tours__);
         });
     },

@@ -16,16 +16,28 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom } = tour;
+        const {
+            name,
+            images,
+            reviews,
+            rating,
+            description,
+            operator_name,
+            length,
+            cities,
+            priceFrom,
+            primaryImageURL,
+        } = tour;
 
         // name
         this.name = name;
         this.renderName(name);
 
         // images
-        this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
-        this.primaryImageURL = this.setPrimaryImage(images);
-        this.renderImage();
+        // this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
+        // this.primaryImageURL = this.setPrimaryImage(images);
+        this.primaryImageURL = primaryImageURL;
+        this.renderPrimaryImageURL();
 
         // reviews
         this.renderReviews(rating, reviews);
@@ -80,7 +92,7 @@ class Tour {
         this.$el.find('#tourTitle').html(name);
     }
 
-    renderImage() {
+    renderPrimaryImageURL() {
         this.$el.find('img').attr('src', this.primaryImageURL);
         this.$el.find('img').attr('alt', this.name);
     }
@@ -103,16 +115,6 @@ class Tour {
 
             this.$el.find('#tourReviewsStarts').append($(starsHtml));
         }
-    }
-
-    setPrimaryImage(images) {
-        let newImage = images.find((image) => image.is_primary && image.url && image.url.trim().lenght !== 0);
-        if (newImage) return newImage.url;
-
-        newImage = images.find((image) => image.url && image.url.trim().lenght !== 0);
-        if (newImage) return newImage.url;
-
-        return this.defaultImageURL;
     }
 }
 
