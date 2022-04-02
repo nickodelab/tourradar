@@ -46,9 +46,6 @@ const logic = {
     sortByPrice(sortBy) {
         if (sortBy !== 'lowest-price' && sortBy !== 'highest-price') throw TypeError(`${sortBy} is not a valid value`);
 
-        // first add priceFrom to every tour
-        this.addPriceFrom();
-
         // then order by 'priceFrom'
         if (sortBy === 'lowest-price') this.__tours__.sort((a, b) => a.priceFrom - b.priceFrom);
         if (sortBy === 'highest-price') this.__tours__.sort((a, b) => b.priceFrom - a.priceFrom);
@@ -77,6 +74,9 @@ const logic = {
         tourRadarAPI.onLoad((err, tours) => {
             if (err) callback(err);
             this.tours = tours;
+
+            // add priceFrom to every tour
+            this.addPriceFrom();
 
             // load by default by popularity
             this.sortByPopularity();

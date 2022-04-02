@@ -47,30 +47,18 @@ class Tour {
         this.renderDestinationsStartEnd(cities);
 
         // price - from
-        this.price = dates;
-        this.renderPrice(dates);
-
-        console.log('priceFrom', priceFrom);
+        this.priceFrom = priceFrom;
+        this.renderPriceFrom(priceFrom);
     }
 
-    renderPrice(dates) {
-        if (dates.length === 0) return;
-
-        // filter first by availability > 0
-        const datesWithAvailability = dates.filter(({ availability }) => availability > 0);
-
-        // then order by ascending price
-        const datesOrderedByPrice = [...datesWithAvailability];
-        datesOrderedByPrice.sort((a, b) => a.eur - b.eur);
-
-        this.$el.find('#priceFrom').html(`${datesOrderedByPrice[0].eur} €`);
+    renderPriceFrom(priceFrom) {
+        this.$el.find('#priceFrom').html(`${priceFrom} €`);
     }
 
     renderDestinationsStartEnd(destinations) {
         const cities = destinations.map(({ name }) => name);
 
         this.$el.find('#destinations').html(cities.slice(0, 3).join(', '));
-
         this.$el.find('#startsEnds').html(`${cities[0]} / ${cities[cities.length - 1]}`);
     }
 
