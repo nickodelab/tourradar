@@ -29,12 +29,20 @@ toursResults.onLoad();
 
 sortSelect.onSort = (sortBy) => {
     try {
-        console.log('main - sortSelect - sortBy', sortBy);
         logic.onSort(sortBy, function (error, tours) {
             if (error) sortSelect.error = error.message;
-            console.log('tours - MAIN', tours);
-            console.log('error - MAIN', error);
-            // todo - sort tours
+
+            toursResults.clearList();
+            tours.forEach((tour) => {
+                $.get(
+                    './templates/tour.html',
+                    function (html_string) {
+                        const newTour = new Tour($(html_string), tour);
+                        toursResults.renderTour(newTour.$el);
+                    },
+                    'html'
+                );
+            });
         });
     } catch (err) {
         console.error(err);
