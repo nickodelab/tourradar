@@ -2,10 +2,6 @@ class Page {
     constructor($el) {
         this.$el = $el;
     }
-
-    renderDropdown() {
-        console.log('render dropdown');
-    }
 }
 
 class ToursResult {
@@ -30,7 +26,7 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL, spacesByDate } = tour;
+        const { name, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL, spacesByDate } = tour;
 
         // name
         this.name = name;
@@ -150,8 +146,6 @@ class FilterSelect {
     }
 
     set dropdownOptions(toursData) {
-        console.log('dropdownOptions', toursData);
-
         const options = toursData.reduce((acc, current) => {
             return (acc += `<option data-filter="${current.month}">${current.month} (${current.toursAvailable} available tours)</option>`);
         }, '');

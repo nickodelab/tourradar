@@ -85,6 +85,9 @@ const logic = {
      * @param {String} sortBy - "lowest-price" || "highest-price"
      */
     sortByPopularity() {
+        // add reviews and rating to 0 in the tour doesn't have it
+        this.__tours__ = this.__tours__.map((tour) => ({ ...tour, rating: tour.rating || 0, reviews: tour.reviews || 0 }));
+
         // order first by reviews number in descending order
         this.__tours__.sort((a, b) => b.reviews - a.reviews);
 
@@ -176,7 +179,6 @@ const logic = {
     onSort(sortBy, callback) {
         if (typeof sortBy !== 'string') throw TypeError(`${sortBy} is not a string`);
         if (!sortBy.trim().length) throw Error('sortBy is empty');
-
         if (typeof callback !== 'function') throw TypeError(`${callback} is not a function`);
 
         if (sortBy === 'lowest-price' || sortBy === 'highest-price') this.sortByPrice(sortBy);
@@ -196,12 +198,9 @@ const logic = {
         if (typeof filterBy !== 'string') throw TypeError(`${filterBy} is not a month + year`);
         if (typeof callback !== 'function') throw TypeError(`${callback} is not a function`);
 
-        console.log(filterBy);
-
         const filteredTours = this.__tours__.filter(({ spacesByDate }) => {
             return spacesByDate.some(({ departureMonth }) => departureMonth === filterBy);
         });
-        console.log('filteredTours', filteredTours);
 
         callback(undefined, filteredTours);
     },
