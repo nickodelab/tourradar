@@ -37,7 +37,7 @@ const logic = {
      */
 
     addPrimaryImageURL() {
-        const newTours = this.__tours__.map((tour) => {
+        this.__tours__ = this.__tours__.map((tour) => {
             // images can be []
             if (tour.images.length === 0)
                 return {
@@ -53,8 +53,29 @@ const logic = {
             newImage = tour.images.find((image) => image.url && image.url.trim().length !== 0);
             return { ...tour, primaryImageURL: newImage.url };
         });
+    },
 
-        this.__tours__ = newTours;
+    addAvailableSpaces() {
+        this.__tours__ = this.__tours__.map((tour) => {
+            // filter by availability
+            const availabilityDates = tour.dates.filter(({ availability }) => availability > 0);
+
+            // order by start date
+            // sort mutates original array
+            const datesOrderedByDate = [...availabilityDates];
+
+            // sort by price
+            datesOrderedByDate.sort((a, b) => moment(a.start).format('x') - moment(b.start).format('x'));
+
+            // ie. '{date: '30 Mar 2017', month: 'March', spaces: 8}'
+            const spacesByMonth = datesOrderedByDate.map((date) => ({
+                date: moment(date.start).format('DD MMM YYYY'),
+                month: moment(date.start).format('MMMM'),
+                spaces: date.availability,
+            }));
+
+            return { ...tour, spacesByMonth };
+        });
     },
 
     /**
@@ -89,8 +110,7 @@ const logic = {
      * @param {String} sortBy - "shortest-duration" || "longest-duration"
      */
     sortByDuration(sortBy) {
-        if (sortBy !== 'shortest-duration' && sortBy !== 'longest-duration')
-            throw TypeError(`${sortBy} is not a valid value`);
+        if (sortBy !== 'shortest-duration' && sortBy !== 'longest-duration') throw TypeError(`${sortBy} is not a valid value`);
         if (sortBy === 'shortest-duration') this.__tours__.sort((a, b) => a.length - b.length);
         if (sortBy === 'longest-duration') this.__tours__.sort((a, b) => b.length - a.length);
     },
@@ -113,8 +133,13 @@ const logic = {
             // add primaryImageURL to every tour
             this.addPrimaryImageURL();
 
+            // add availableSpaces to every tour
+            this.addAvailableSpaces();
+
             // load by default by popularity
             this.sortByPopularity();
+
+            console.log(this.__tours__);
 
             callback(undefined, this.__tours__);
         });

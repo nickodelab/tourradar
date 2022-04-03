@@ -16,7 +16,7 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL } = tour;
+        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL, spacesByMonth } = tour;
 
         // name
         this.name = name;
@@ -48,6 +48,21 @@ class Tour {
         // price - from
         this.priceFrom = priceFrom;
         this.renderPriceFrom(priceFrom);
+
+        // spaces left
+        this.spacesByMonth = spacesByMonth;
+        this.renderSpaces(spacesByMonth);
+    }
+
+    renderSpaces(spacesByMonth) {
+        let spacesStr = '';
+        if (spacesByMonth.length === 0) {
+            spacesStr = `<dl class='dl'><dt>No available dates</dt></dl>`;
+        } else {
+            spacesStr = `<dl class='dl'><dt>${spacesByMonth[0].date}</dt><dd>${spacesByMonth[0].spaces} spaces left</dd></dl>`;
+            spacesStr += `<dl class='dl'><dt>${spacesByMonth[1].date}</dt><dd>${spacesByMonth[1].spaces} spaces left</dd></dl>`;
+        }
+        this.$el.find('#spaces').append($(spacesStr));
     }
 
     // priceFrom can be undefined
