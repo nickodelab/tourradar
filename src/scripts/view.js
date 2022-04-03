@@ -1,3 +1,13 @@
+class Page {
+    constructor($el) {
+        this.$el = $el;
+    }
+
+    renderDropdown() {
+        console.log('render dropdown');
+    }
+}
+
 class ToursResult {
     constructor($el) {
         this.$el = $el;
@@ -16,7 +26,7 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL, spacesByMonth } = tour;
+        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL, spacesByDate } = tour;
 
         // name
         this.name = name;
@@ -50,17 +60,16 @@ class Tour {
         this.renderPriceFrom(priceFrom);
 
         // spaces left
-        this.spacesByMonth = spacesByMonth;
-        this.renderSpaces(spacesByMonth);
+        this.spacesByDate = spacesByDate;
+        this.renderSpaces(spacesByDate);
     }
 
-    renderSpaces(spacesByMonth) {
+    renderSpaces(spacesByDate) {
         let spacesStr = '';
-        if (spacesByMonth.length === 0) {
-            spacesStr = `<dl class='dl'><dt>No available dates</dt></dl>`;
-        } else {
-            spacesStr = `<dl class='dl'><dt>${spacesByMonth[0].date}</dt><dd>${spacesByMonth[0].spaces} spaces left</dd></dl>`;
-            spacesStr += `<dl class='dl'><dt>${spacesByMonth[1].date}</dt><dd>${spacesByMonth[1].spaces} spaces left</dd></dl>`;
+        if (spacesByDate.length === 0) spacesStr = `<dl class='dl'><dt>No available dates</dt></dl>`;
+        else {
+            spacesStr = `<dl class='dl'><dt>${spacesByDate[0].date}</dt><dd>${spacesByDate[0].spaces} spaces left</dd></dl>`;
+            spacesStr += `<dl class='dl'><dt>${spacesByDate[1].date}</dt><dd>${spacesByDate[1].spaces} spaces left</dd></dl>`;
         }
         this.$el.find('#spaces').append($(spacesStr));
     }
@@ -134,6 +143,16 @@ class SortSelect {
 class FilterSelect {
     constructor($el) {
         this.__$el__ = $el;
+    }
+
+    set dropdownOptions(toursData) {
+        console.log('dropdownOptions', toursData);
+
+        const options = toursData.reduce((acc, current) => {
+            return (acc += `<option data-filter="2">${current.month} (${current.toursAvailable} available tours)</option>`);
+        }, '');
+
+        this.__$el__.append($(options));
     }
 
     set onFilter(callback) {

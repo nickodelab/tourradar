@@ -68,13 +68,13 @@ const logic = {
             datesOrderedByDate.sort((a, b) => moment(a.start).format('x') - moment(b.start).format('x'));
 
             // ie. '{date: '30 Mar 2017', month: 'March', spaces: 8}'
-            const spacesByMonth = datesOrderedByDate.map((date) => ({
+            const spacesByDate = datesOrderedByDate.map((date) => ({
                 date: moment(date.start).format('DD MMM YYYY'),
                 month: moment(date.start).format('MMMM'),
                 spaces: date.availability,
             }));
 
-            return { ...tour, spacesByMonth };
+            return { ...tour, spacesByDate };
         });
     },
 
@@ -137,12 +137,33 @@ const logic = {
             this.addAvailableSpaces();
 
             // load by default by popularity
+            // todo - call sortByPopularity only once
             this.sortByPopularity();
 
             console.log(this.__tours__);
 
-            callback(undefined, this.__tours__);
+            callback(undefined, this.__tours__, this.toursData());
         });
+    },
+
+    toursData() {
+        const toursByMonth = [];
+
+        this.__tours__.map((tour) => {
+            const spacesByUniqueMonth = tour.spacesByDate.reduce((acc, current) => {
+                if (!acc.some(({ month }) => month === current.month)) return [...acc, current];
+                return acc;
+            }, []);
+
+            spacesByUniqueMonth.map((spaceByDate) => {
+                const monthIndex = toursByMonth.findIndex(({ month }) => month === moment(spaceByDate.date).format('MMMM YYYY'));
+
+                if (monthIndex === -1) toursByMonth.push({ month: moment(spaceByDate.date).format('MMMM YYYY'), toursAvailable: 1 });
+                else toursByMonth[monthIndex].toursAvailable = toursByMonth[monthIndex].toursAvailable + 1;
+            });
+        });
+
+        return toursByMonth;
     },
 
     /**
