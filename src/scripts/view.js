@@ -16,26 +16,13 @@ class Tour {
     constructor($el, tour) {
         this.$el = $el;
 
-        const {
-            name,
-            images,
-            reviews,
-            rating,
-            description,
-            operator_name,
-            length,
-            cities,
-            priceFrom,
-            primaryImageURL,
-        } = tour;
+        const { name, images, reviews, rating, description, operator_name, length, cities, priceFrom, primaryImageURL } = tour;
 
         // name
         this.name = name;
         this.renderName(name);
 
         // images
-        // this.defaultImageURL = `https://via.placeholder.com/150/818d99/FFFFFF/?text=${name.toUpperCase()}`;
-        // this.primaryImageURL = this.setPrimaryImage(images);
         this.primaryImageURL = primaryImageURL;
         this.renderPrimaryImageURL();
 
@@ -104,12 +91,10 @@ class Tour {
             this.$el.find('#reviewCount').html(`${reviewCount} reviews`);
 
             let starsHtml = '';
-            for (let i = 0; i < Math.floor(rating); i++)
-                starsHtml += "<i class='tour__header__reviews__icon material-icons'>star</i>";
+            for (let i = 0; i < Math.floor(rating); i++) starsHtml += "<i class='tour__header__reviews__icon material-icons'>star</i>";
 
             for (let i = 0; i < numberStarsToShow - Math.floor(rating); i++) {
-                if (rating % 1 !== 0)
-                    starsHtml += "<i class='tour__header__reviews__icon material-icons'>star_half</i>";
+                if (rating % 1 !== 0) starsHtml += "<i class='tour__header__reviews__icon material-icons'>star_half</i>";
                 else starsHtml += "<i class='tour__header__reviews__icon material-icons'>star_border</i>";
             }
 
