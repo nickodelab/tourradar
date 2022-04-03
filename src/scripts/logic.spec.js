@@ -1,27 +1,52 @@
-spotifyApi.token = 'BQCTyAGZfqgxMwk6KxwUlr7JKI6rlHAROEy8x96DsOShqfcLMfxzl57jQZbhj7MFF3JGgPVHlM_Rodd62hScf1K5X3Z2sN4mFjAqmMGX7TNKRPOF7Qz4MeZwzih9DrdR2w2Eki3xtjxHOA'
-
 describe('logic', function () {
-    describe('search artists', function () {
-        it('should succeed on mathing query', function (done) {
-            const query = 'madonna'
+    beforeEach(function () {
+        // call to getTour in API and fill state in logic
+    });
 
-            logic.searchArtists(query, function (error, artists) {
-                expect(error).toBeUndefined()
+    it('should succeed on getting all tours', function (done) {
+        logic.onLoad(function (error, tours) {
+            expect(error).toBeUndefined();
 
-                expect(artists).toBeDefined()
-                expect(artists instanceof Array).toBeTruthy()
-                expect(artists.length).toBeGreaterThan(0)
+            expect(tours).toBeDefined();
+            expect(tours instanceof Array).toBeTruthy();
+            expect(tours.length).toBeGreaterThan(0);
 
-                artists.forEach(({ name }) => expect(name.toLowerCase()).toContain(query))
+            tours.forEach((tour) => {
+                expect(typeof tour.name).toBe('string');
+                // todo - test deeper tours properties
+            });
+            done();
+        });
+    });
 
-                done()
-            })
-        })
+    it('should succeed on sorting by popularity', function () {
+        // todo
+        expect(true).toBeTruthy();
+    });
 
-        it('should fail on empty query', function () {
-            const query = ''
+    it('should succeed on sorting by price - ascending', function () {
+        // todo
+        expect(true).toBeTruthy();
+    });
 
-            expect(() => logic.searchArtists(query, function (error, artists) { })).toThrowError('query is empty')
-        })
-    })
-})
+    it('should succeed on sorting by price - descending', function () {
+        // todo
+        expect(true).toBeTruthy();
+    });
+
+    it('should succeed on sorting by duration - shortest first', function () {
+        // todo
+        expect(true).toBeTruthy();
+    });
+
+    it('should succeed on sorting by duration - longest first', function () {
+        // todo
+        expect(true).toBeTruthy();
+    });
+
+    it('should fail on sortBy value', function () {
+        expect(function () {
+            logic.onSort([], function () {});
+        }).toThrow(TypeError([] + ' is not a string'));
+    });
+});
