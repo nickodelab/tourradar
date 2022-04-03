@@ -1,3 +1,5 @@
+'use strict';
+
 class Page {
     constructor($el) {
         this.$el = $el;

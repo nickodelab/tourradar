@@ -52,7 +52,6 @@ sortSelect.onSort = (sortBy) => {
 
 filterSelect.onFilter = (filterBy) => {
     try {
-        console.log('main - filterSelect - filterBy', filterBy);
         logic.onFilter(filterBy, function (error, tours) {
             if (error) filterSelect.error = error.message;
 

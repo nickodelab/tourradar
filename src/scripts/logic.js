@@ -55,6 +55,13 @@ const logic = {
         });
     },
 
+    /**
+     * Add the property 'spacesByDate' to every tour
+     * spacesByDate = '{ date: '30 May 2018', month: 'March', spaces: 8, departureMonth: 'May 2018' }'
+     *
+     * 'spacesByDate' is used to show tour details availability information
+     * 'spacesByDate.departureMonth' is needed to have the Filter by departure date working
+     */
     addAvailableSpaces() {
         this.__tours__ = this.__tours__.map((tour) => {
             // filter by availability
@@ -67,7 +74,6 @@ const logic = {
             // sort by price
             datesOrderedByDate.sort((a, b) => moment(a.start).format('x') - moment(b.start).format('x'));
 
-            // ie. '{date: '30 Mar 2017', month: 'March', spaces: 8}'
             const spacesByDate = datesOrderedByDate.map((dateInfo) => ({
                 date: moment(dateInfo.start).format('DD MMM YYYY'),
                 month: moment(dateInfo.start).format('MMMM'),
@@ -81,8 +87,8 @@ const logic = {
 
     /**
      * Sort by popularity
-     *
-     * @param {String} sortBy - "lowest-price" || "highest-price"
+     * we put 0 in case tour.rating == undefined OR tour.reviews == undefined
+     * in order to have the sort by popularity functionality working
      */
     sortByPopularity() {
         // add reviews and rating to 0 in the tour doesn't have it
@@ -115,6 +121,7 @@ const logic = {
      */
     sortByDuration(sortBy) {
         if (sortBy !== 'shortest-duration' && sortBy !== 'longest-duration') throw TypeError(`${sortBy} is not a valid value`);
+
         if (sortBy === 'shortest-duration') this.__tours__.sort((a, b) => a.length - b.length);
         if (sortBy === 'longest-duration') this.__tours__.sort((a, b) => b.length - a.length);
     },
@@ -144,29 +151,31 @@ const logic = {
             // todo - call sortByPopularity only once
             this.sortByPopularity();
 
-            console.log(this.__tours__);
-
-            callback(undefined, this.__tours__, this.toursData());
+            callback(undefined, this.__tours__, this.toursByMonth());
         });
     },
 
-    toursData() {
+    /**
+     * Filter tours by departure month
+     *
+     * @returns {Array} - filtered tours by departureMonth
+     */
+    toursByMonth() {
         const toursByMonth = [];
 
         this.__tours__.map((tour) => {
             const spacesByUniqueMonth = tour.spacesByDate.reduce((acc, current) => {
-                if (!acc.some(({ month }) => month === current.month)) return [...acc, current];
+                if (!acc.some(({ departureMonth }) => departureMonth === current.departureMonth)) return [...acc, current];
                 return acc;
             }, []);
 
             spacesByUniqueMonth.map((spaceByDate) => {
-                const monthIndex = toursByMonth.findIndex(({ month }) => month === moment(spaceByDate.date).format('MMMM YYYY'));
+                const monthIndex = toursByMonth.findIndex(({ month }) => month === moment(spaceByDate.date, 'DD MMM YYYY').format('MMMM YYYY'));
 
-                if (monthIndex === -1) toursByMonth.push({ month: moment(spaceByDate.date).format('MMMM YYYY'), toursAvailable: 1 });
+                if (monthIndex === -1) toursByMonth.push({ month: moment(spaceByDate.date, 'DD MMM YYYY').format('MMMM YYYY'), toursAvailable: 1 });
                 else toursByMonth[monthIndex].toursAvailable = toursByMonth[monthIndex].toursAvailable + 1;
             });
         });
-
         return toursByMonth;
     },
 
@@ -198,10 +207,10 @@ const logic = {
         if (typeof filterBy !== 'string') throw TypeError(`${filterBy} is not a month + year`);
         if (typeof callback !== 'function') throw TypeError(`${callback} is not a function`);
 
-        const filteredTours = this.__tours__.filter(({ spacesByDate }) => {
-            return spacesByDate.some(({ departureMonth }) => departureMonth === filterBy);
-        });
+        const filteredTours = this.__tours__.filter(({ name, spacesByDate }) =>
+            spacesByDate.some(({ departureMonth }) => departureMonth === filterBy)
+        );
 
-        callback(undefined, filteredTours);
+        callback(undefined, filterBy !== 'reset' ? filteredTours : this.__tours__);
     },
 };
