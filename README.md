@@ -21,9 +21,9 @@ For example, for this use case I’m using only one breakpoint (900px) to adjust
 
 ### What sort of optimizations would you suggest for better UI/UX? Are there any tools/metrics that can help to achieve and/or measure these goals?
 
-There are a lot of factors to improve both User Interface and User Experience. For example, the quality of the content or how easy it is to find what you are trying to do are key factors. You must keep your users in mind and show the content in a form easy to read and fast to navigate.
+There are a lot of factors to improve both User Interface and User Experience. For example, the quality of the content or how easy it is to find what you are trying to do, are key factors. You must keep your users in mind and show the content in an easy way to read and fast to navigate.
 
--   From a UI perspective, you must the every component design in a elegant way and coherent with the business corporate image
+-   From a UI perspective, you must design every component in an elegant way and coherent with the business corporate image
 
 -   From a UX perspective, the page performance plays an important rol. There are several tools and techniques to test the performance of a page and you must optimize the size of any local resource and always minimize them on production servers. To provide the fastest delivery you must use a CDN to serve resources and images. Also, it’s highly recommended to try to maintain the load times as shortener as you can.
 
@@ -39,13 +39,13 @@ Also, there are great tools to mention, easy to install (normally a script that 
 
 -   [Optimizely](https://www.optimizely.com/): you can create A/B testing to check and implement improvements continuously
 
--   [Hotjar](https://www.hotjar.com/): hotjar allow you to get real recordings from your users and understand much better possible issues to improve
+-   [Hotjar](https://www.hotjar.com/): hotjar allows you to get real recordings from your users and understand much better possible issues to improve
 
 -   [Google Search Console](https://search.google.com/search-console/about): this tool can be really useful because you can get recommendations about how Google sees and crawls your site.
 
 Again, one of the most useful tools you can use during your development process is the browser inspector. For example, in Google Chrome you have several tabs or sections inside the Chrome inspector to maintain UX. To mention one tab:
 
--   Performance tab: allows you to record user flows to analyze page load times and other relevant performance information related to each page accessed during the user interaction
+-   Performance tab: allows you to record user flows to analyze loading page time and other relevant performance information related to each page accessed during the user interaction
 
 ![Browser Tools to inspect breakpoints](./doc/performance-tab.png)
 
