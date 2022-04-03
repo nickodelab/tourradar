@@ -68,10 +68,11 @@ const logic = {
             datesOrderedByDate.sort((a, b) => moment(a.start).format('x') - moment(b.start).format('x'));
 
             // ie. '{date: '30 Mar 2017', month: 'March', spaces: 8}'
-            const spacesByDate = datesOrderedByDate.map((date) => ({
-                date: moment(date.start).format('DD MMM YYYY'),
-                month: moment(date.start).format('MMMM'),
-                spaces: date.availability,
+            const spacesByDate = datesOrderedByDate.map((dateInfo) => ({
+                date: moment(dateInfo.start).format('DD MMM YYYY'),
+                month: moment(dateInfo.start).format('MMMM'),
+                spaces: dateInfo.availability,
+                departureMonth: moment(dateInfo.start).format('MMMM YYYY'),
             }));
 
             return { ...tour, spacesByDate };
@@ -186,19 +187,22 @@ const logic = {
     },
 
     /**
-     * Filter
-     * // todo
+     * Filter tours by departure month
      *
      * @param {string} filterBy
      * @param {function} callback
      */
     onFilter(filterBy, callback) {
-        if (typeof filterBy !== 'number') throw TypeError(`${filterBy} is not a number/month`);
-
-        // validate month
-
+        if (typeof filterBy !== 'string') throw TypeError(`${filterBy} is not a month + year`);
         if (typeof callback !== 'function') throw TypeError(`${callback} is not a function`);
 
-        tourRadarAPI.onSort(filterBy, callback);
+        console.log(filterBy);
+
+        const filteredTours = this.__tours__.filter(({ spacesByDate }) => {
+            return spacesByDate.some(({ departureMonth }) => departureMonth === filterBy);
+        });
+        console.log('filteredTours', filteredTours);
+
+        callback(undefined, filteredTours);
     },
 };

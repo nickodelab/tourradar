@@ -20,6 +20,10 @@ class ToursResult {
     renderTour($tour) {
         toursResults.$el.append($tour);
     }
+
+    renderTours(tours) {
+        tours.forEach((tour) => this.renderTour(tour.$el));
+    }
 }
 
 class Tour {
@@ -149,7 +153,7 @@ class FilterSelect {
         console.log('dropdownOptions', toursData);
 
         const options = toursData.reduce((acc, current) => {
-            return (acc += `<option data-filter="2">${current.month} (${current.toursAvailable} available tours)</option>`);
+            return (acc += `<option data-filter="${current.month}">${current.month} (${current.toursAvailable} available tours)</option>`);
         }, '');
 
         this.__$el__.append($(options));
