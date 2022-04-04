@@ -86,8 +86,6 @@ Alongside a responsive website that looks like the screenshots below, your propo
 
 **Screenshots**
 
-# [Live Site](https://tourradar-nicopixel.netlify.app/)
-
 -   From the smallest supported screen
 
 ![Mobile Screenshot](./doc/screenshot-mobile.png)
@@ -104,10 +102,12 @@ Alongside a responsive website that looks like the screenshots below, your propo
 
 PS: Is there something ambiguous in the test case? Some of the ambiguity has been intentionally left in there to give room to your creativity.
 
-## Test Use Case
+---
 
-![Jamine Testing](./doc/mobile-version.png)
-![Jamine Testing](./doc/desktop-version.png)
+# [Live Site](https://tourradar-nicopixel.netlify.app/)
+
+![Mobile Version](./doc/mobile-version.png)
+![Desktop Version](./doc/desktop-version.png)
 
 ### Run the project in localhost
 
