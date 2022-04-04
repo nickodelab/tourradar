@@ -69,9 +69,9 @@ Another tool you can use during your development process to check if a CSS rule 
 
 ### What criteria would you consider for choosing the tech stack for this test case?
 
-I tried to use the suggested tech stack for this case except for Zepto.js (because I have no experience with it). When you choose a tech stack for a website like tourradar you should use something widely browser and device supported and with a bundle size (like Zepto.js has).
+I tried to use the suggested tech stack for this case except for Zepto.js (because I have no experience with it). When you choose a tech stack for a website like tourradar you should use something widely browser and device supported and with a small bundle size (like Zepto.js has).
 
-Other important factors are the UX/UI and SEO factors (for example, React is not good in SEO terms because it is a Single Page Application which Google has some problems with crawling it properly).
+Other important factors are the UX/UI and SEO factors (for example, React is not good in SEO terms because it is a Single Page Application which Google has some problems to crawling it properly).
 
 In summary, small, fast and widely supported are the key factors choosing the best tech stack to give a great user experience.
 
