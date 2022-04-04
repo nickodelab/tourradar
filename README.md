@@ -107,7 +107,7 @@ PS: Is there something ambiguous in the test case? Some of the ambiguity has bee
 # [Live Site](https://tourradar-nicopixel.netlify.app/)
 
 ![Mobile Version](./doc/mobile-version.png)
-![Desktop Version](./doc/desktopVersion.png)
+![Desktop Version](./doc/desktop-version.png)
 
 ### Run the project in localhost
 
