@@ -1,3 +1,11 @@
+## TourRadar Frontend Engineer Test Case
+
+### Context
+
+To support the travelling needs of our users we have around 35,000 tours live on our website exposed through various page types, such as a Tour Detail Page (TDP) or Search Engine Results Pages (SERPs). For this test case you will focus on a sample SERP page that lists our tours for Europe, which is our highest traffic page. Therefore the page is highly optimised to bring the best experience to our users. This is made possible by taking various aspects into consideration during the development process on a day to day basis.
+
+### Questions we ask you to answer:
+
 ### How would you ensure that the page is fully responsive and developed with mobile-first in mind?
 
 **Check the responsiveness of a web page**
@@ -66,3 +74,47 @@ I tried to use the suggested tech stack for this case except for Zepto.js (becau
 Other important factors are the UX/UI and SEO factors (for example, React is not good in SEO terms because it is a Single Page Application which Google has some problems with crawling it properly).
 
 In summary, small, fast and widely supported are the key factors choosing the best tech stack to give a great user experience.
+
+### Things we ask you to implement
+
+Alongside a responsive website that looks like the screenshots below, your proposed solution should at least implement the following features:
+
+-   Fetch provided data from https://mocki.io/v1/11356aa2-6371-41d4-9d49-77a5e9e9924f
+-   Sort by lowest and highest price
+-   Sort by longest and shortest tour
+-   Filter by departure month using departure date dropdown
+
+**Screenshots**
+
+# [Live Site](https://tourradar-nicopixel.netlify.app/)
+
+-   From the smallest supported screen
+
+![Mobile Screenshot](./doc/screenshot-mobile.png)
+
+![Desktop Screenshot](./doc/screenshot-desktop.png)
+
+### Things you should consider
+
+-   You must NOT use any big JS frameworks/library (React, Vue, AngularJS, Bootstrap and etc.); using a small library/module (ZeptoJS, jQuery, Moment.js and etc.) for a specific task is perfectly fine.
+
+-   You must not use any CSS library (like Bootstrap); using a CSS Preprocessors like SCSS or LESS is perfectly fine.
+
+-   Your attempted solution should support IE 11+, Edge 12+, FF 28+, Chrome 29+, Safari 9.0+ versions.
+
+PS: Is there something ambiguous in the test case? Some of the ambiguity has been intentionally left in there to give room to your creativity.
+
+## Test Use Case
+
+![Jamine Testing](./doc/mobile-version.png)
+![Jamine Testing](./doc/desktop-version.png)
+
+### Run the project in localhost
+
+To avoid any CORS error, loading the local `tour.html` file, you must to run a local server (like [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer))
+
+## Testing
+
+The Jasmine testing framework has been implemented in local with some tests against the logic layer.
+
+![Jamine Testing](./doc/jasmine-testing.png)
